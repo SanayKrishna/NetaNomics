@@ -56,7 +56,7 @@ python seed_db.py
 uvicorn main:app --reload --port 8000
 ```
 
-The Tesseract path is set for Windows (`C:\Program Files\Tesseract-OCR\tesseract.exe`) in `app/ai_pipeline.py`. Change it there on macOS or Linux.
+Tesseract is found on your `PATH`, or at `C:\Program Files\Tesseract-OCR\tesseract.exe` on Windows. Set `TESSERACT_CMD` in `.env` to point somewhere else.
 
 **Frontend**
 

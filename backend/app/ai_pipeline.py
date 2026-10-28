@@ -16,7 +16,9 @@ def extract_text_from_pdf(pdf_path: str) -> str:
     print(f"  [AI Stage 1] Starting LOCAL OCR for: {pdf_path}")
     if not os.path.exists(pdf_path):
         raise FileNotFoundError(f"The specified PDF file was not found: {pdf_path}")
-    if platform.system() == "Windows":
+    if os.getenv("TESSERACT_CMD"):
+        pytesseract.pytesseract.tesseract_cmd = os.getenv("TESSERACT_CMD")
+    elif platform.system() == "Windows":
         tesseract_path = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
         if os.path.exists(tesseract_path):
             pytesseract.pytesseract.tesseract_cmd = tesseract_path
